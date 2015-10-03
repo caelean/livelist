@@ -4,6 +4,13 @@ chrome.tabs.getSelected(null, function(tab) {
 
 function myFunction(tablink) {
   // do stuff here
-  console.log(tablink);
-	alert(tablink);
+  var urlKey = "tab";
+
+  var urlTable = {};
+  urlTable[urlKey] = tablink;
+
+  chrome.storage.sync.set(urlTable);
+  chrome.storage.sync.get(urlTable, function(result){
+  	alert(result[urlKey]);
+  });
 }
