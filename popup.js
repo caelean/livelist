@@ -1,4 +1,5 @@
-chrome.runtime.sendMessage({text: "startUp"});
+chrome.browserAction.setBadgeText({text: ""});
+
 function getJSON(callback){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -20,16 +21,9 @@ getJSON(function processJSON(data)
 
 var tab;
 
-function btn(){
-	chrome.runtime.sendMessage({text: "updateBadge"}, function(response){
-		console.log(response.status);
-	});
-	
-/*
 function myFunction(tablink) {
 	this.tab = tablink;
 	chrome.browserAction.setBadgeText({text: ""});
-	//alert(tablink);
 }
 
 function btn()
@@ -43,8 +37,8 @@ function btn()
 			chrome.browserAction.setBadgeText({text: "1"});
 		}
 	});
-  sendMail();
-}*/
+  //sendMail();
+}
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('Save').addEventListener('click', btn);
@@ -61,8 +55,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 });*/
 
-	//xhttp.open("PUT", "http://52.25.136.126:5984/craigslist", true);
-	//xhttp.send(JSON.parse({"Test":"1,2,3"}));
 function sendMail() {
     $.ajax({
       type: 'POST',

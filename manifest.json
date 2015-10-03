@@ -10,9 +10,12 @@
 		"default_popup": "popup.html"
 	},
 
+	"content_scripts": {
+		"scripts": ["popup.js"]
+	},
+
 	"background": {
-		"scripts": ["eventpage.js"],
-		"persistent": false
+		"scripts": ["eventpage.js"]
 	},
 
 	"permissions": [
