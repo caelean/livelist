@@ -80,10 +80,21 @@ function getData() {
           var array = Array.from(children);
           var obj = '['
           array.forEach(function(item){
-              if(item.className === 'row') {
-                console.log(item.getAttribute('data-pid'));
+              if(item.className === 'row')
+              {
+                var date = item.getElementsByTagName('time')[0].innerHTML;
+                console.log("Date: "+date);
+                console.log("PID: "+item.getAttribute('data-pid'));
                 var name = item.getElementsByClassName('hdrlnk')[0].innerHTML;
-                console.log(name);
+                console.log("Name: "+name);
+                var price = "Not Applicable";
+                if(item.getElementsByClassName('price').length > 0)
+                  price = item.getElementsByClassName('price')[0].innerHTML;
+                console.log("Price: "+price);
+                var location = "Not Applicable";
+                if(item.getElementsByTagName('small').length > 0)
+                  location = item.getElementsByTagName('small')[0].innerText;
+                console.log("Location: "+location);
               }
           });
 
