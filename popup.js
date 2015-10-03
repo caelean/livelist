@@ -7,8 +7,8 @@ function getJSON(callback){
 	}
 	xhttp.open("GET", "http://52.25.136.126:5984/craigslist/3b277a6d1cd211fc820edfce8b000e9f", true);
 	xhttp.send();
-	xhttp.open("PUT", "http://52.25.136.126:5984/craigslist", true);
-	xhttp.send(JSON.parse({"Test":"1,2,3"}));
+	//xhttp.open("PUT", "http://52.25.136.126:5984/craigslist", true);
+	//xhttp.send(JSON.parse({"Test":"1,2,3"}));
 }
 
 /*$.couch.db("mydb").create({
@@ -25,6 +25,8 @@ getJSON(function processJSON(data)
 	var processedData = JSON.parse(data);
 	alert("URL: " + processedData.url + " Price: " + processedData.price + " Location: "+ processedData.location);
 });
+
+
 var tab;
 chrome.tabs.getSelected(null, function(tab)
 {
@@ -32,8 +34,8 @@ chrome.tabs.getSelected(null, function(tab)
 });
 
 function myFunction(tablink) {
-  this.tab = tablink;
-	//alert(tablink);
+	this.tab = tablink;
+	alert(tablink);
 }
 
 function btn()
