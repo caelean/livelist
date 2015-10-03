@@ -1,4 +1,5 @@
 
+
 jQuery.ajax = (function(_ajax){
 
     var protocol = location.protocol,
@@ -74,13 +75,16 @@ function getData() {
           // console.log(data);
           var html = $.parseHTML(data)[19];
           var content = html.getElementsByClassName('content')[0];
-          console.log(content);
-          var textnode = document.createTextNode(data);
           document.getElementById('data').appendChild(content);
           var children = content.childNodes;
           var array = Array.from(children);
+          var obj = '['
           array.forEach(function(item){
-              console.log(item);
+              if(item.className === 'row') {
+                console.log(item.getAttribute('data-pid'));
+                var name = item.getElementsByClassName('hdrlnk')[0].innerHTML;
+                console.log(name);
+              }
           });
 
 
