@@ -6,10 +6,13 @@
  -->
 <html>
   <head>
-    <title>Getting Started Extension's Popup</title>
+    <title>LiveList: CraigsList made easy</title>
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <style>
       body {
-        font-family: "Segoe UI", "Lucida Grande", Tahoma, sans-serif;
+        font-family: 'Roboto', sans-serif;
         font-size: 100%;
       }
       #status {
@@ -18,6 +21,25 @@
         text-overflow: ellipsis;
         overflow: hidden;
         max-width: 400px;
+        width: 400px;
+        height: 600px;
+      }
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+      .pure-button {
+        width: 200px;
+        background: #560F8D;
+        color: #FFFFFF;
+        display: block;
+        margin: 0 auto;
+      }
+      .fa-floppy-o {
+        padding-right: 5px;
+      }
+      #hr {
+        width: 300px;
       }
     </style>
 
@@ -31,7 +53,11 @@
     <script src="popup.js"></script>
   </head>
   <body>
-    <div id="status"></div>
-    <img id="image-result" hidden>
+    <div id="status">
+      <img src = "Design/LiveListSmall.png">
+      <button class="button-xlarge pure-button" id="Save">
+        <i class="fa fa-floppy-o"></i>   Save the Search!</button>
+      <hr id="hr">
+    </div>
   </body>
 </html>

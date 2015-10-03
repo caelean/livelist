@@ -1,4 +1,5 @@
 
+
 jQuery.ajax = (function(_ajax){
 
     var protocol = location.protocol,
@@ -70,8 +71,24 @@ function getData() {
       type: 'GET',
       success: function(res) {
           var text = res.responseText;
-          console.log(res);
-          alert(text);
+          data = text;
+          // console.log(data);
+          var html = $.parseHTML(data)[19];
+          var content = html.getElementsByClassName('content')[0];
+          document.getElementById('data').appendChild(content);
+          var children = content.childNodes;
+          var array = Array.from(children);
+          var obj = '['
+          array.forEach(function(item){
+              if(item.className === 'row') {
+                console.log(item.getAttribute('data-pid'));
+                var name = item.getElementsByClassName('hdrlnk')[0].innerHTML;
+                console.log(name);
+              }
+          });
+
+
       }
   });
+
 }
