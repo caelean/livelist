@@ -70,8 +70,21 @@ function getData() {
       type: 'GET',
       success: function(res) {
           var text = res.responseText;
-          console.log(res);
-          alert(text);
+          data = text;
+          // console.log(data);
+          var html = $.parseHTML(data)[19];
+          var content = html.getElementsByClassName('content')[0];
+          console.log(content);
+          var textnode = document.createTextNode(data);
+          document.getElementById('data').appendChild(content);
+          var children = content.childNodes;
+          var array = Array.from(children);
+          array.forEach(function(item){
+              console.log(item);
+          });
+
+
       }
   });
+
 }
