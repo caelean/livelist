@@ -29,7 +29,8 @@ function myFunction(tablink) {
 }
 
 function btn()
-{	chrome.browserAction.getBadgeText({}, function(result){
+{
+  	chrome.browserAction.getBadgeText({}, function(result){
 		if(result != ""){
 			var newNum = parseInt(result) + 1;
 			var numString = newNum.toString();
@@ -38,6 +39,7 @@ function btn()
 			chrome.browserAction.setBadgeText({text: "1"});
 		}
 	});
+  sendMail();
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -57,3 +59,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
 	//xhttp.open("PUT", "http://52.25.136.126:5984/craigslist", true);
 	//xhttp.send(JSON.parse({"Test":"1,2,3"}));
+function sendMail() {
+    $.ajax({
+      type: 'POST',
+      url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+      data: {
+        'key': 'wYV-pnTfFPboxkY4X12I-g',
+        'message': {
+          'from_email': 'amaini@ucsd.edu',
+          'to': [
+              {
+                'email': 'amaini@ucsd.edu',
+                'name': '',
+                'type': 'to'
+              }
+            ],
+          'autotext': 'true',
+          'subject': 'Hello!',
+          'html': 'Test Notification post'
+        }
+      }
+     }).done(function(response) {
+       console.log(response); // if you're into that sorta thing
+     });
+}
