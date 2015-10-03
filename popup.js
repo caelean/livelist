@@ -9,8 +9,30 @@ function getJSON(callback){
 	xhttp.send();
 }
 
-getJSON(function processJSON(data){
+getJSON(function processJSON(data)
+{
 	var processedData = JSON.parse(data);
 	alert("URL: " + processedData.url + " Price: " + processedData.price + " Location: "
 		+ processedData.location);
 });
+var tab;
+chrome.tabs.getSelected(null, function(tab)
+{
+    myFunction(tab.url);
+});
+
+function myFunction(tablink) {
+  this.tab = tablink;
+	//alert(tablink);
+}
+
+function btn()
+{
+  //alert(tab);
+  console.log(tab);
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('Save').addEventListener('click', btn);
+});
+>>>>>>> Stashed changes
