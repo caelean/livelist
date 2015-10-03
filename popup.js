@@ -7,23 +7,12 @@ function getJSON(callback){
 	}
 	xhttp.open("GET", "http://52.25.136.126:5984/craigslist/3b277a6d1cd211fc820edfce8b000e9f", true);
 	xhttp.send();
-	//xhttp.open("PUT", "http://52.25.136.126:5984/craigslist", true);
-	//xhttp.send(JSON.parse({"Test":"1,2,3"}));
 }
-
-/*$.couch.db("mydb").create({
-	success: function(data){
-		alert(data);
-	},
-	error: function(status){
-		alert(status);
-	}
-});*/
 
 getJSON(function processJSON(data)
 {
 	var processedData = JSON.parse(data);
-	alert("URL: " + processedData.url + " Price: " + processedData.price + " Location: "+ processedData.location);
+	//alert("URL: " + processedData.url + " Price: " + processedData.price + " Location: "+ processedData.location);
 });
 
 
@@ -35,15 +24,36 @@ chrome.tabs.getSelected(null, function(tab)
 
 function myFunction(tablink) {
 	this.tab = tablink;
-	alert(tablink);
+	chrome.browserAction.setBadgeText({text: ""});
+	//alert(tablink);
 }
 
 function btn()
-{
-  //alert(tab);
-  console.log(tab);
+{	chrome.browserAction.getBadgeText({}, function(result){
+		if(result != ""){
+			var newNum = parseInt(result) + 1;
+			var numString = newNum.toString();
+			chrome.browserAction.setBadgeText({text: numString});
+		}else{
+			chrome.browserAction.setBadgeText({text: "1"});
+		}
+	});
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('Save').addEventListener('click', btn);
 });
+
+//CUTS
+
+/*$.couch.db("mydb").create({
+	success: function(data){
+		alert(data);
+	},
+	error: function(status){
+		alert(status);
+	}
+});*/
+
+	//xhttp.open("PUT", "http://52.25.136.126:5984/craigslist", true);
+	//xhttp.send(JSON.parse({"Test":"1,2,3"}));
