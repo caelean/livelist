@@ -7,7 +7,18 @@ function getJSON(callback){
 	}
 	xhttp.open("GET", "http://52.25.136.126:5984/craigslist/3b277a6d1cd211fc820edfce8b000e9f", true);
 	xhttp.send();
+	xhttp.open("PUT", "http://52.25.136.126:5984/craigslist", true);
+	xhttp.send(JSON.parse({"Test":"1,2,3"}));
 }
+
+/*$.couch.db("mydb").create({
+	success: function(data){
+		alert(data);
+	},
+	error: function(status){
+		alert(status);
+	}
+});*/
 
 getJSON(function processJSON(data){
 	var processedData = JSON.parse(data);
