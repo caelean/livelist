@@ -1,3 +1,4 @@
+chrome.runtime.sendMessage({text: "startUp"});
 function getJSON(callback){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -12,32 +13,18 @@ function getJSON(callback){
 getJSON(function processJSON(data)
 {
 	var processedData = JSON.parse(data);
-	//alert("URL: " + processedData.url + " Price: " + processedData.price + " Location: "+ processedData.location);
+	console.log("URL: " + processedData.url + " Price: " + processedData.price +
+		" Location: "+ processedData.location);
 });
 
 
 var tab;
-chrome.tabs.getSelected(null, function(tab)
-{
-    myFunction(tab.url);
-});
 
-function myFunction(tablink) {
-	this.tab = tablink;
-	chrome.browserAction.setBadgeText({text: ""});
-	//alert(tablink);
-}
-
-function btn()
-{	chrome.browserAction.getBadgeText({}, function(result){
-		if(result != ""){
-			var newNum = parseInt(result) + 1;
-			var numString = newNum.toString();
-			chrome.browserAction.setBadgeText({text: numString});
-		}else{
-			chrome.browserAction.setBadgeText({text: "1"});
-		}
+function btn(){
+	chrome.runtime.sendMessage({text: "updateBadge"}, function(response){
+		console.log(response.status);
 	});
+	
 }
 
 document.addEventListener('DOMContentLoaded', function () {
