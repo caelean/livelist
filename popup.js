@@ -12,8 +12,7 @@ function getJSON(callback){
 getJSON(function processJSON(data)
 {
 	var processedData = JSON.parse(data);
-	alert("URL: " + processedData.url + " Price: " + processedData.price + " Location: "
-		+ processedData.location);
+	//alert("URL: " + processedData.url + " Price: " + processedData.price + " Location: "+ processedData.location);
 });
 var tab;
 chrome.tabs.getSelected(null, function(tab)
@@ -35,4 +34,3 @@ function btn()
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('Save').addEventListener('click', btn);
 });
->>>>>>> Stashed changes
