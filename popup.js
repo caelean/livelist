@@ -1,12 +1,17 @@
+var urlTable = [];
+chrome.storage.sync.set(urlTable);
+
 chrome.tabs.getSelected(null, function(tab) {
     myFunction(tab.url);
 });
 
 function myFunction(tablink) {
   // do stuff here
-  var urlKey = "tab";
+  chrome.storage.sync.get(urlTable, function(result){
+  	var urlKey = result.length;
 
-  var urlTable = {};
+  });
+  
   urlTable[urlKey] = tablink;
 
   chrome.storage.sync.set(urlTable);
