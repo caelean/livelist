@@ -1,6 +1,12 @@
 var mode = localStorage.demo;
 console.log(mode);
 
+if(localStorage.searchMessage !== ""){
+  
+  console.log(document.getElementById('url'));
+  console.log("in local search thing");
+}
+
 jQuery.ajax = (function(_ajax){
 
     var protocol = location.protocol,
@@ -88,6 +94,7 @@ function sendRequest() {
   getData(tab, function(result) {
       console.log(result);
 			$("#url").append(' : ' + result.length + ' results');
+      localStorage.searchMessage = document.getElementById('url').innerHTML;
   });
 }
 
