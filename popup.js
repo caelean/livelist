@@ -3,6 +3,7 @@ if(localStorage.programState == "" || localStorage.programState == 0){
 }else if(localStorage.programState == 1){
   localStorage.programState = 0;
 }
+
 jQuery.ajax = (function(_ajax){
 
     var protocol = location.protocol,
