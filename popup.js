@@ -95,6 +95,9 @@ function sendRequest() {
       console.log(result);
 			$("#url").append(' : ' + result.length + ' results');
       localStorage.searchMessage = document.getElementById('url').innerHTML;
+			if(mode) {
+				localStorage.trigger = true;
+			}
   });
 }
 
@@ -223,6 +226,9 @@ function btn()
     console.log(ind);
     // path = path.slice(0, ind);
 	   $("#url").text(path);
+     var a = document.getElementById('url');
+     a.href = tab;
+     a.style.textAlign = "center";
   }
   localStorage.pathStorage = path;
   localStorage.tabStorage = tab;

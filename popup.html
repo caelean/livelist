@@ -21,7 +21,7 @@
         overflow: hidden;
         max-width: 400px;
         width: 400px;
-        height: 600px;
+        height: 400px;
       }
       img, #email {
         white-space: normal;
@@ -29,12 +29,19 @@
         margin: 0 auto;
 
       }
+      a {
+        text-decoration: none;
+        margin-top: -40px;
+        text-align: center;
+      }
       #email {
         width: 200px;
       }
       #url {
-        margin-top: -40px;
+        margin-top: -80px;
         text-align: center;
+        margin: 0 auto;
+        display: block;
       }
       .pure-button {
         width: 200px;
@@ -52,9 +59,7 @@
         transition: .5s;
       }
       #email-buttons {
-        position: relative;
-        bottom: 80%;
-        top: 20%;
+        margin-top: -100px;
       }
 
       .fa-floppy-o {
@@ -81,7 +86,7 @@
           <button type="submit" class="button-xlarge pure-button" id="Save">
         <i class="fa fa-floppy-o"></i> Save the Search!</button>
       <hr id="hr">
-      <p id="url"></p>
+      <a id="url"></a>
         <div id="email-buttons">
           <input type="email" placeholder="Email" id = "email">
           <button type="submit" class="pure-button" id="add-email">Submit</button>
