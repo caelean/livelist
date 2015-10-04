@@ -39,7 +39,7 @@ function btn()
 			chrome.browserAction.setBadgeText({text: "1"});
 		}
 	});
-  sendMail();
+  // sendMail();
 }
 
 document.addEventListener('DOMContentLoaded', function () {

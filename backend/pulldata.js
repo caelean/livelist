@@ -64,42 +64,81 @@ jQuery.ajax = (function(_ajax){
 
 })(jQuery.ajax);
 
-function getData() {
+function diff(old, next) {
+  var ans = [];
+  next.forEach(function(listing) {
+    var nextID = listing.ID;
+    ans.push(nextID);
+    old.forEach(function(item) {
+      var oldID = item.ID;
+      if(oldID === nextID) {
+        ans.pop();
+      }
+    });
+  });
+  return ans;
+}
+
+
+
+function sendRequest() {
   var url = document.getElementById("url").value;
+  var info = getData(url);
+  console.log(info);
+}
+
+function getData(url) {
+
+  var obj = '['
+
   $.ajax({
       url: url,
       type: 'GET',
       success: function(res) {
           var text = res.responseText;
           data = text;
-          // console.log(data);
           var html = $.parseHTML(data)[19];
           var content = html.getElementsByClassName('content')[0];
           document.getElementById('data').appendChild(content);
           var children = content.childNodes;
           var array = Array.from(children);
-          var obj = '['
           array.forEach(function(item){
               if(item.className === 'row')
               {
-                var date = item.getElementsByTagName('time')[0].innerHTML;
-                console.log("Date: "+date);
-                console.log("PID: "+item.getAttribute('data-pid'));
+                obj += '{'
+                var pid = item.getAttribute('data-pid');
+                obj += '"ID" : "' + pid + '",'
+
                 var name = item.getElementsByClassName('hdrlnk')[0].innerHTML;
-                console.log("Name: "+name);
-                var price = "Not Applicable";
+                obj += '"Name" : "' + name + '",'
+
+                var date = item.getElementsByTagName('time')[0].innerHTML;
+                obj += '"Date" : "' + date + '",'
+
+                var price = "Not Shown";
                 if(item.getElementsByClassName('price').length > 0)
                   price = item.getElementsByClassName('price')[0].innerHTML;
-                console.log("Price: "+price);
-                var location = "Not Applicable";
+                obj += '"Price" : "' + price + '",'
+
+                var location = "Not Shown";
                 if(item.getElementsByTagName('small').length > 0)
                   location = item.getElementsByTagName('small')[0].innerText;
-                console.log("Location: "+location);
+                obj += '"Loc" : "' + location + '"'
+
+                // console.log("PID: "+pid);
+                // console.log("Name: "+name);
+                // console.log("Date: "+date);
+                // console.log("Price: "+price);
+                // console.log("Location: "+location);
+
+
+                obj += '},'
               }
           });
-
-
+          obj = obj.slice(0,-1);
+          obj += ']'
+          obj = JSON.parse(obj);
+          console.log(obj);
       }
   });
-
 }
