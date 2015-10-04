@@ -15,6 +15,7 @@
 	},
 
 	"permissions": [
+		"background",
 		"activeTab",
 		"storage",
 		"notifications",
