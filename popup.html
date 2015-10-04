@@ -21,12 +21,16 @@
         overflow: hidden;
         max-width: 400px;
         width: 400px;
-        height: 600px;
+        height: 800px;
       }
       img, #email {
         white-space: normal;
         display: block;
         margin: 0 auto;
+
+      }
+      #email {
+        width: 200px;
       }
       #url {
         margin-top: -40px;
@@ -38,6 +42,14 @@
         color: #FFFFFF;
         display: block;
         margin: 0 auto;
+      }
+      .add-email {
+
+      }
+      #email-buttons {
+        position: relative;
+        bottom: 80%;
+        top: 20%;
       }
       .fa-floppy-o {
         padding-right: 5px;
@@ -59,10 +71,13 @@
   <body>
     <div id="status">
       <img src = "Design/LiveListSmall.png">
-          <input type="email" placeholder="Email" id = "email">
           <button type="submit" class="button-xlarge pure-button" id="Save">
         <i class="fa fa-floppy-o"></i> Save the Search!</button>
       <hr id="hr">
+        <div id="email-buttons">
+          <input type="email" placeholder="Email" id = "email">
+          <button type="submit" class="pure-button" id="add-email">Submit</button>
+        </div>
       <p id="url"></p>
     </div>
   </body>
