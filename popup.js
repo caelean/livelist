@@ -111,6 +111,9 @@ function getData(url, callback) {
                 var name = item.getElementsByClassName('hdrlnk')[0].innerHTML.replace(/(['"])/g, "");
                 obj += '"Name" : "' + name + '",'
 
+								var uni = item.getElementsByClassName('hdrlnk')[0].getAttribute('href');
+								console.log(uni);
+
                 var date = item.getElementsByTagName('time')[0].innerHTML.replace(/(['"])/g, "");
                 obj += '"Date" : "' + date + '",'
 
@@ -153,6 +156,9 @@ function getData(url, callback) {
 
 							var name = item.getElementsByClassName('hdrlnk')[0].innerHTML.replace(/(['"])/g, "");
 							obj += '"Name" : "' + name + '",'
+
+							var uni = item.getElementsByClassName('hdrlnk')[0].getAttribute('href');
+							obj += '"URL" : "http:' + uni + '",';
 
 							var date = item.getElementsByTagName('time')[0].innerHTML.replace(/(['"])/g, "");
 							obj += '"Date" : "' + date + '",'
@@ -206,7 +212,7 @@ function btn()
     path = path.replace(/\+/g, " ")
     ind = path.indexOf("&");
     console.log(ind);
-    // path = path.slice(0, ind + 1);
+    // path = path.slice(0, ind);
 	   $("#url").text(path);
   }
   localStorage.pathStorage = path;
