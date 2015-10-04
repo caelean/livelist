@@ -1,12 +1,16 @@
 var tab;
-
-function myFunction(tablink) {
+chrome.tabs.getSelected(null, function(tab)
+{
+    myFunction(tab.url);
+});
+function myFunction(tablink)
+{
 	this.tab = tablink;
 }
 
 function btn()
 {
-	var obj = parse(tab)
+	var obj = parse(tab);
 	var path = obj.path;
 	var ind = path.indexOf("query")
 	path = path.slice(ind+6, path.length);

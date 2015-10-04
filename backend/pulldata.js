@@ -83,23 +83,32 @@ function diff(old, next) {
 
 function sendRequest() {
   var url = document.getElementById("url").value;
-  var info = getData(url);
-  console.log(info);
+  var old;
+  getData(url, function(result) {
+      old = result;
+      console.log(old);
+  });
+  var next;
+  url = 'http://sandiego.craigslist.org/search/cta?sort=rel&srchType=T&query=2016+mazda'
+  getData(url, function(result) {
+      next = result;
+      console.log(next);
+      alert(diff(old,next).length);
+  });
+
 }
 
-function getData(url) {
-
-  var obj = '['
-
+function getData(url, callback) {
   $.ajax({
       url: url,
       type: 'GET',
       success: function(res) {
+          var obj = '['
           var text = res.responseText;
           data = text;
           var html = $.parseHTML(data)[19];
           var content = html.getElementsByClassName('content')[0];
-          document.getElementById('data').appendChild(content);
+          // document.getElementById('data').appendChild(content);
           var children = content.childNodes;
           var array = Array.from(children);
           array.forEach(function(item){
@@ -109,20 +118,20 @@ function getData(url) {
                 var pid = item.getAttribute('data-pid');
                 obj += '"ID" : "' + pid + '",'
 
-                var name = item.getElementsByClassName('hdrlnk')[0].innerHTML;
+                var name = item.getElementsByClassName('hdrlnk')[0].innerHTML.replace(/(['"])/g, "");
                 obj += '"Name" : "' + name + '",'
 
-                var date = item.getElementsByTagName('time')[0].innerHTML;
+                var date = item.getElementsByTagName('time')[0].innerHTML.replace(/(['"])/g, "");
                 obj += '"Date" : "' + date + '",'
 
                 var price = "Not Shown";
                 if(item.getElementsByClassName('price').length > 0)
-                  price = item.getElementsByClassName('price')[0].innerHTML;
+                  price = item.getElementsByClassName('price')[0].innerHTML.replace(/(['"])/g, "")
                 obj += '"Price" : "' + price + '",'
 
                 var location = "Not Shown";
                 if(item.getElementsByTagName('small').length > 0)
-                  location = item.getElementsByTagName('small')[0].innerText;
+                  location = item.getElementsByTagName('small')[0].innerText.replace(/(['"])/g, "");
                 obj += '"Loc" : "' + location + '"'
 
                 // console.log("PID: "+pid);
@@ -138,7 +147,7 @@ function getData(url) {
           obj = obj.slice(0,-1);
           obj += ']'
           obj = JSON.parse(obj);
-          console.log(obj);
+          callback(obj);
       }
   });
 }
