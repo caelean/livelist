@@ -1,5 +1,16 @@
 localStorage.demo = false;
-chrome.browserAction.setBadgeText({text: "1"});
+chrome.runtime.onInstalled.addListener(function(){
+  console.log("in startup");
+  chrome.browserAction.getBadgeText({}, function(result){
+  if(result != ""){
+    var temp = parseInt(result);
+    temp = temp + 1;
+  }else{
+    temp = 1;
+  }
+  chrome.browserAction.setBadgeText({text: temp.toString()});
+});
+});
 
 var currentEmail;
 var sent;
@@ -31,7 +42,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, updatedTab){
 function callback(url){
 	//will eventually iterate through list to check if tracked
 	if(url == localStorage.tabStorage){
-		chrome.browserAction.setBadgeText({text: ""});
+		//chrome.browserAction.setBadgeText({text: ""});
 	}
 }
 
