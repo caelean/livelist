@@ -1,4 +1,5 @@
-if(localStorage.searchMessage !== undefined){
+
+if(localStorage.searchMessage !== undefined && localStorage.demo === 'true'){
   var a = document.getElementById('url');
   a.innerHTML = localStorage.searchMessage;
   a.href = localStorage.tabStorage;
@@ -8,7 +9,9 @@ if(localStorage.searchMessage !== undefined){
 
 console.log("demo: " + localStorage.demo);
 console.log("trigger: " + localStorage.trigger);
-
+if(localStorage.demo === 'false') {
+  document.getElementById('email-buttons').style.visibility = "hidden";
+}
 if(localStorage.trigger === 'true' && localStorage.demo === 'true') {
   document.getElementById('email-buttons').style.visibility = "hidden";
   document.getElementById('result').style.visibility = "visible";
@@ -215,6 +218,7 @@ chrome.tabs.getSelected(null, function(tab)
 {
     myFunction(tab.url);
 });
+
 function myFunction(tablink)
 {
 	this.tab = tablink;
