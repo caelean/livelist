@@ -2,13 +2,15 @@ localStorage.demo = false;
 
 
 var currentEmail;
-
-setInterval(function emailWrapper(){
+var sent;
+setInterval(function emailWrapper()
+{
   currentEmail = localStorage.var;
-	if(currentEmail != ""){
+	if(currentEmail != "" && !sent){
 		sendMail(currentEmail);
+    sent = true;
 	}
-}, 1800000);
+}, 3000);
 
 chrome.tabs.onActivated.addListener(function(activeInfo) {
     chrome.tabs.get(activeInfo.tabId, function (tab) {
@@ -39,7 +41,7 @@ function sendMail(address) {
       data: {
         'key': 'wYV-pnTfFPboxkY4X12I-g',
         'message': {
-          'from_email': 'hello@livelist.com',
+          'from_email': 'livelist@livelist.com',
           'to': [
               {
                 'email': address,
@@ -48,8 +50,8 @@ function sendMail(address) {
               }
             ],
           'autotext': 'true',
-          'subject': 'Hello!',
-          'html': 'Test Notification post'
+          'subject': 'Notification Alert!',
+          'html': 'New Craiglist listing on your livelist search'
         }
       }
      }).done(function(response) {
