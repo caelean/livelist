@@ -1,4 +1,5 @@
 var tab;
+
 chrome.tabs.getSelected(null, function(tab)
 {
     myFunction(tab.url);
@@ -68,6 +69,18 @@ function parse(url)
 document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('Save').addEventListener('click', btn);
 });
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('add-email').addEventListener('click', setEmail);
+});
+
+var currentEmail = "";
+
+function setEmail(){
+  currentEmail = document.getElementById('email').value;
+  localStorage.var = currentEmail;
+  localStorage.testing = 3;
+}
 
 function sendMail() {
     $.ajax({
