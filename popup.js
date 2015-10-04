@@ -12,9 +12,14 @@ function btn()
 {
 	var obj = parse(tab);
 	var path = obj.path;
-	var ind = path.indexOf("query")
-	path = path.slice(ind+6, path.length);
-	$("#url").text(path);
+	var ind = path.indexOf("query");
+  console.log(ind);
+  if(ind > 1)
+	{
+    path = path.slice(ind+6, path.length);
+    path = path.replace(/\+/g, " ")
+	   $("#url").text(path);
+  }
 	console.log(obj);
 }
 
