@@ -102,11 +102,21 @@ var next;
 function sendRequest() {
   // var url = 'http://sandiego.craigslist.org/search/sss?sort=rel&srchType=T&query=2016+mazda+miata';
   getData(tab, function(result) {
-      console.log(result);
 			$("#url").append(' : ' + result.length + ' results');
+
+      var whole = document.createElement('ul');
+      for(var i = 0; i < 5; i++) {
+        var anch = document.createElement('a');
+        anch.href = result[i].URL;
+        anch.innerHTML = result[i].Name;
+        var li = document.createElement('li');
+        li.appendChild(anch);
+        whole.appendChild(li);
+      }
+      document.getElementById('div1').appendChild(whole);
+
       localStorage.searchMessage = document.getElementById('url').innerHTML;
 			if(localStorage.demo === 'true') {
-        console.log('here');
 				localStorage.trigger = 'true';
 			}
   });
