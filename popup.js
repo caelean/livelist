@@ -1,10 +1,12 @@
+//localStorage.clear();
 var mode = localStorage.demo;
 console.log(mode);
 
 if(localStorage.searchMessage !== ""){
-  
-  console.log(document.getElementById('url'));
-  console.log("in local search thing");
+  var a = document.getElementById('url');
+  a.innerHTML = localStorage.searchMessage;
+  a.href = localStorage.tabStorage;
+  a.style.textAlign = "center";
 }
 
 jQuery.ajax = (function(_ajax){
