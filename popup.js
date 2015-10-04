@@ -1,3 +1,4 @@
+
 if(localStorage.searchMessage !== undefined && localStorage.demo === 'true'){
   var a = document.getElementById('url');
   a.innerHTML = localStorage.searchMessage;
@@ -216,6 +217,7 @@ chrome.tabs.getSelected(null, function(tab)
 {
     myFunction(tab.url);
 });
+
 function myFunction(tablink)
 {
 	this.tab = tablink;
