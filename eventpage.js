@@ -1,4 +1,3 @@
-var counter = 0;
 var currentEmail = localStorage.var;
 
 setInterval(function emailWrapper(){
@@ -25,8 +24,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, updatedTab){
 function callback(url){
 	//will eventually iterate through list to check if tracked
 	if(url.indexOf("craigslist.org") > -1){
-		counter = counter + 1;
-		chrome.browserAction.setBadgeText({text: counter.toString()});
+		chrome.browserAction.setBadgeText({text: ""});
 	}
 }
 
