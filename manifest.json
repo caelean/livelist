@@ -10,15 +10,10 @@
 		"default_popup": "popup.html"
 	},
 
-	"content_scripts": {
-		"scripts": ["popup.js"]
-	},
-
-	"background": {
-		"scripts": ["eventpage.js"]
-	},
+	"background_page" : "background.html",
 
 	"permissions": [
+		"background",
 		"activeTab",
 		"storage",
 		"notifications"
