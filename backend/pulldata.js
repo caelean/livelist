@@ -79,23 +79,35 @@ function diff(old, next) {
   return ans;
 }
 
+var old;
+var next;
 
-
+function sendRequest2() {
+  var url = 'https://sandiego.craigslist.org/search/sss?sort=rel&query=qwertyuiop+civic';
+  getData(url, function(result) {
+      old = result;
+      console.log(old);
+      url = 'https://sandiego.craigslist.org/search/sss?sort=rel&query=qwertyuiop';
+      var difference = [];
+        getData(url, function(result) {
+            next = result;
+            difference = diff(old, next);
+            console.log(next);
+            console.log(difference);
+            next.forEach(function(element) {
+              if(element.ID === difference[0]) {
+                  alert(element.Name);
+              }
+            });
+        });
+  });
+}
 function sendRequest() {
-  var url = document.getElementById("url").value;
-  var old;
+  var url = 'https://sandiego.craigslist.org/search/sss?sort=rel&query=qwertyuiop+civic';
   getData(url, function(result) {
       old = result;
       console.log(old);
   });
-  var next;
-  url = 'http://sandiego.craigslist.org/search/cta?sort=rel&srchType=T&query=2016+mazda'
-  getData(url, function(result) {
-      next = result;
-      console.log(next);
-      alert(diff(old,next).length);
-  });
-
 }
 
 function getData(url, callback) {
@@ -133,14 +145,11 @@ function getData(url, callback) {
                 if(item.getElementsByTagName('small').length > 0)
                   location = item.getElementsByTagName('small')[0].innerText.replace(/(['"])/g, "");
                 obj += '"Loc" : "' + location + '"'
-
                 // console.log("PID: "+pid);
                 // console.log("Name: "+name);
                 // console.log("Date: "+date);
                 // console.log("Price: "+price);
                 // console.log("Location: "+location);
-
-
                 obj += '},'
               }
           });
