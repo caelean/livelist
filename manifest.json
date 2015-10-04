@@ -9,10 +9,16 @@
 		"default_icon": "Design/favicon.png",
 		"default_popup": "popup.html"
 	},
+
+	"background": {
+		"scripts": ["eventpage.js"]
+	},
+
 	"permissions": [
 		"activeTab",
 		"storage",
-		"notifications"
+		"notifications",
+		"background"
 	]
 
 

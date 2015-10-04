@@ -23,9 +23,14 @@
         width: 400px;
         height: 600px;
       }
-      img {
+      img, #email {
+        white-space: normal;
         display: block;
         margin: 0 auto;
+      }
+      #url {
+        margin-top: -40px;
+        text-align: center;
       }
       .pure-button {
         width: 200px;
@@ -54,9 +59,11 @@
   <body>
     <div id="status">
       <img src = "Design/LiveListSmall.png">
-      <button class="button-xlarge pure-button" id="Save">
-        <i class="fa fa-floppy-o"></i>   Save the Search!</button>
+          <input type="email" placeholder="Email" id = "email">
+          <button type="submit" class="button-xlarge pure-button" id="Save">
+        <i class="fa fa-floppy-o"></i> Save the Search!</button>
       <hr id="hr">
+      <p id="url"></p>
     </div>
   </body>
 </html>
