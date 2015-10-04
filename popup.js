@@ -25,12 +25,28 @@ function myFunction(tablink) {
 
 function btn()
 {
+	rememberValues()
 	var obj = parse(tab)
 	var path = obj.path;
 	var ind = path.indexOf("query")
 	path = path.slice(ind+6, path.length);
 	$("#url").text(path);
 	console.log(obj);
+}
+
+function rememberValues() {
+	// Get a value saved in a form.
+    var theValue = Math.random();
+    // Check that there's some code there.
+    if (theValue > 0.5) {
+      message('Message 1.');
+      return;
+    }
+    // Save it using the Chrome extension storage API.
+    chrome.storage.sync.set({'value': theValue}, function() {
+      // Notify that we saved.
+      message('Settings saved');
+    });	
 }
 
 function parse(url)
