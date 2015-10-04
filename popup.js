@@ -1,4 +1,5 @@
-if(localStorage.searchMessage !== undefined){
+if(localStorage.searchMessage !== undefined
+  && localStorage.demo == 'true'){
   var a = document.getElementById('url');
   a.innerHTML = localStorage.searchMessage;
   a.href = localStorage.tabStorage;
