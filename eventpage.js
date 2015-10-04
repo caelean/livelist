@@ -19,5 +19,8 @@
 		}
 	});
 });*/
-
-console.log("Hi");
+var counter = 0;
+setInterval(function getDif(){
+	counter = counter + 1;
+	chrome.browserAction.setBadgeText({text: counter.toString()})
+}, 10000);
