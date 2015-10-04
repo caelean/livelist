@@ -30,7 +30,7 @@ setInterval(function checkTrigger(){
   if(localStorage.demo == 'true' && localStorage.trigger == 'true'){
     setTimeout(function addBadgeText(){
       chrome.browserAction.setBadgeText({text: "1"});
-    }, 4000);
+    }, 8000);
   }
 }, 1000);
 
