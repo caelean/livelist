@@ -319,4 +319,30 @@ function setEmail(){
   localStorage.var = currentEmail;
   localStorage.testing = 3;
   document.getElementById('email-buttons').style.visibility = "hidden";
+  sendMail(currentEmail);
+}
+
+function sendMail(address) {
+    $.ajax({
+      type: 'POST',
+      url: 'https://mandrillapp.com/api/1.0/messages/send.json',
+      data: {
+        'key': 'wYV-pnTfFPboxkY4X12I-g',
+        'message': {
+          'from_email': 'livelist@livelist.com',
+          'to': [
+              {
+                'email': address,
+                'name': '',
+                'type': 'to'
+              }
+            ],
+          'autotext': 'true',
+          'subject': 'Notification Alert!',
+          'html': 'New Craiglist listing on your livelist search'
+        }
+      }
+     }).done(function(response) {
+       console.log(response); // if you're into that sorta thing
+     });
 }
