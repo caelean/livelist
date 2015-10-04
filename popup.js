@@ -2,11 +2,12 @@
 var mode = localStorage.demo;
 console.log(mode);
 
-if(localStorage.searchMessage !== ""){
+if(localStorage.searchMessage !== undefined){
   var a = document.getElementById('url');
   a.innerHTML = localStorage.searchMessage;
   a.href = localStorage.tabStorage;
   a.style.textAlign = "center";
+  document.getElementById('url').style.visibility = "visible";
 }
 
 jQuery.ajax = (function(_ajax){
@@ -231,6 +232,7 @@ function btn()
      var a = document.getElementById('url');
      a.href = tab;
      a.style.textAlign = "center";
+     document.getElementById('url').style.visibility = "visible";
   }
   localStorage.pathStorage = path;
   localStorage.tabStorage = tab;
