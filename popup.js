@@ -14,6 +14,7 @@ if(localStorage.demo === 'false') {
 }
 if(localStorage.trigger === 'true' && localStorage.demo === 'true') {
   document.getElementById('email-buttons').style.visibility = "hidden";
+  document.getElementById('result').style.visibility = "visible";
   localStorage.trigger = 'false';
 }
 jQuery.ajax = (function(_ajax){
