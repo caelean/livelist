@@ -1,6 +1,8 @@
-localStorage.demo = false;
 chrome.runtime.onInstalled.addListener(function(){
-  console.log("in startup");
+  console.log("Startup");
+  localStorage.clear();
+  localStorage.demo = true;
+  localStorage.trigger = false;
   chrome.browserAction.getBadgeText({}, function(result){
   if(result != ""){
     var temp = parseInt(result);

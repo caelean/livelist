@@ -1,14 +1,15 @@
-//localStorage.clear();
-var mode = localStorage.demo;
-console.log(mode);
-
 if(localStorage.searchMessage !== ""){
   var a = document.getElementById('url');
   a.innerHTML = localStorage.searchMessage;
   a.href = localStorage.tabStorage;
   a.style.textAlign = "center";
 }
-
+console.log("demo: " + localStorage.demo);
+console.log("trigger: " + localStorage.trigger)
+if(localStorage.trigger == true && localStorage.demo == true) {
+  document.getElementById('email-buttons').style.visibility = "hidden";
+  localStorage.trigger = false;
+}
 jQuery.ajax = (function(_ajax){
 
     var protocol = location.protocol,
@@ -97,7 +98,9 @@ function sendRequest() {
       console.log(result);
 			$("#url").append(' : ' + result.length + ' results');
       localStorage.searchMessage = document.getElementById('url').innerHTML;
-			if(mode) {
+      console.log('request' + localStorage.demo);
+			if(localStorage.demo == true) {
+        console.log('here');
 				localStorage.trigger = true;
 			}
   });
