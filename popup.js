@@ -1,14 +1,18 @@
-//localStorage.clear();
-var mode = localStorage.demo;
-console.log(mode);
-
-if(localStorage.searchMessage !== ""){
+if(localStorage.searchMessage !== undefined){
   var a = document.getElementById('url');
   a.innerHTML = localStorage.searchMessage;
   a.href = localStorage.tabStorage;
   a.style.textAlign = "center";
+  document.getElementById('url').style.visibility = "visible";
 }
 
+console.log("demo: " + localStorage.demo);
+console.log("trigger: " + localStorage.trigger);
+
+if(localStorage.trigger === 'true' && localStorage.demo === 'true') {
+  document.getElementById('email-buttons').style.visibility = "hidden";
+  localStorage.trigger = 'false';
+}
 jQuery.ajax = (function(_ajax){
 
     var protocol = location.protocol,
@@ -97,8 +101,9 @@ function sendRequest() {
       console.log(result);
 			$("#url").append(' : ' + result.length + ' results');
       localStorage.searchMessage = document.getElementById('url').innerHTML;
-			if(mode) {
-				localStorage.trigger = true;
+			if(localStorage.demo === 'true') {
+        console.log('here');
+				localStorage.trigger = 'true';
 			}
   });
 }
@@ -127,7 +132,7 @@ function getData(url, callback) {
                 obj += '"Name" : "' + name + '",'
 
 								var uni = item.getElementsByClassName('hdrlnk')[0].getAttribute('href');
-								console.log(uni);
+                obj += '"URL" : "http:' + uni + '",';
 
                 var date = item.getElementsByTagName('time')[0].innerHTML.replace(/(['"])/g, "");
                 obj += '"Date" : "' + date + '",'
@@ -232,6 +237,7 @@ function btn()
      var a = document.getElementById('url');
      a.href = tab;
      a.style.textAlign = "center";
+     document.getElementById('url').style.visibility = "visible";
   }
   localStorage.pathStorage = path;
   localStorage.tabStorage = tab;
