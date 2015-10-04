@@ -1,7 +1,7 @@
 chrome.runtime.onInstalled.addListener(function(){
   console.log("Startup");
   localStorage.clear();
-  localStorage.demo = 'false';
+  localStorage.demo = 'true';
   localStorage.trigger = 'false';
 //   chrome.browserAction.getBadgeText({}, function(result){
 //   if(result != ""){
@@ -26,6 +26,14 @@ setInterval(function emailWrapper()
 	}
 }, 3000);
 
+setInterval(function checkTrigger(){
+  if(localStorage.demo == 'true' && localStorage.trigger == 'true'){
+    setTimeout(function addBadgeText(){
+      chrome.browserAction.setBadgeText({text: "1"});
+    }, 4000);
+  }
+}, 1000);
+
 chrome.tabs.onActivated.addListener(function(activeInfo) {
     chrome.tabs.get(activeInfo.tabId, function (tab) {
         callback(tab.url);
@@ -43,8 +51,9 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, updatedTab){
 
 function callback(url){
 	//will eventually iterate through list to check if tracked
-	if(url == localStorage.tabStorage){
-		//chrome.browserAction.setBadgeText({text: ""});
+	if(url == localStorage.tabStorage ||
+    url == 'https://sandiego.craigslist.org/esd/apa/5221875739.html'){
+		chrome.browserAction.setBadgeText({text: ""});
 	}
 }
 
