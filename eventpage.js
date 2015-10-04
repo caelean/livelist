@@ -1,3 +1,6 @@
+localStorage.demo = false;
+
+
 var currentEmail;
 var sent;
 setInterval(function emailWrapper()
@@ -6,6 +9,7 @@ setInterval(function emailWrapper()
 	if(currentEmail != "" && !sent){
 		sendMail(currentEmail);
     sent = true;
+    localStorage.var = "";
 	}
 }, 3000);
 

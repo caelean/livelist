@@ -1,3 +1,6 @@
+var mode = localStorage.demo;
+console.log(mode);
+
 jQuery.ajax = (function(_ajax){
 
     var protocol = location.protocol,
@@ -183,7 +186,6 @@ function getData(url, callback) {
 				obj = obj.slice(0,-1);
 				obj += ']'
 				obj = JSON.parse(obj);
-				console.log('obj' + obj);
 				callback(obj);
       }
   });
