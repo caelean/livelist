@@ -209,6 +209,7 @@ function btn()
     // path = path.slice(0, ind + 1);
 	   $("#url").text(path);
   }
+  localStorage.pathStorage = path;
 	console.log(tab);
 	sendRequest();
 }

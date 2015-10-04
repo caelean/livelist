@@ -1,6 +1,7 @@
-var currentEmail = localStorage.var;
+var currentEmail;
 
 setInterval(function emailWrapper(){
+  currentEmail = localStorage.var;
 	if(currentEmail != ""){
 		sendMail(currentEmail);
 	}
@@ -23,7 +24,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, updatedTab){
 
 function callback(url){
 	//will eventually iterate through list to check if tracked
-	if(url.indexOf("craigslist.org") > -1){
+	if(url == localStorage.pathStorage){
 		chrome.browserAction.setBadgeText({text: ""});
 	}
 }
