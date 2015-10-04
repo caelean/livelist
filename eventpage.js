@@ -1,17 +1,17 @@
 chrome.runtime.onInstalled.addListener(function(){
   console.log("Startup");
   localStorage.clear();
-  localStorage.demo = true;
-  localStorage.trigger = false;
-  chrome.browserAction.getBadgeText({}, function(result){
-  if(result != ""){
-    var temp = parseInt(result);
-    temp = temp + 1;
-  }else{
-    temp = 1;
-  }
-  chrome.browserAction.setBadgeText({text: temp.toString()});
-});
+  localStorage.demo = 'true';
+  localStorage.trigger = 'false';
+//   chrome.browserAction.getBadgeText({}, function(result){
+//   if(result != ""){
+//     var temp = parseInt(result);
+//     temp = temp + 1;
+//   }else{
+//     temp = 1;
+//   }
+//   chrome.browserAction.setBadgeText({text: temp.toString()});
+// });
 });
 
 var currentEmail;

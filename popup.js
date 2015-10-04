@@ -9,9 +9,9 @@ if(localStorage.searchMessage !== undefined){
 console.log("demo: " + localStorage.demo);
 console.log("trigger: " + localStorage.trigger);
 
-if(localStorage.trigger == true && localStorage.demo == true) {
+if(localStorage.trigger === 'true' && localStorage.demo === 'true') {
   document.getElementById('email-buttons').style.visibility = "hidden";
-  localStorage.trigger = false;
+  localStorage.trigger = 'false';
 }
 jQuery.ajax = (function(_ajax){
 
@@ -101,10 +101,9 @@ function sendRequest() {
       console.log(result);
 			$("#url").append(' : ' + result.length + ' results');
       localStorage.searchMessage = document.getElementById('url').innerHTML;
-      console.log('request' + localStorage.demo);
-			if(localStorage.demo == true) {
+			if(localStorage.demo === 'true') {
         console.log('here');
-				localStorage.trigger = true;
+				localStorage.trigger = 'true';
 			}
   });
 }
@@ -133,7 +132,7 @@ function getData(url, callback) {
                 obj += '"Name" : "' + name + '",'
 
 								var uni = item.getElementsByClassName('hdrlnk')[0].getAttribute('href');
-								console.log(uni);
+                obj += '"URL" : "http:' + uni + '",';
 
                 var date = item.getElementsByTagName('time')[0].innerHTML.replace(/(['"])/g, "");
                 obj += '"Date" : "' + date + '",'
