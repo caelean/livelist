@@ -209,6 +209,7 @@ chrome.tabs.getSelected(null, function(tab)
 {
     myFunction(tab.url);
 });
+
 function myFunction(tablink)
 {
 	this.tab = tablink;
