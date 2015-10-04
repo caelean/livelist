@@ -1,3 +1,5 @@
+var mode = localStorage.demo;
+console.log(mode);
 if(localStorage.programState == "" || localStorage.programState == 0){
   localStorage.programState = 1;
 }else if(localStorage.programState == 1){
@@ -189,7 +191,6 @@ function getData(url, callback) {
 				obj = obj.slice(0,-1);
 				obj += ']'
 				obj = JSON.parse(obj);
-				console.log('obj' + obj);
 				callback(obj);
       }
   });

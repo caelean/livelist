@@ -1,3 +1,6 @@
+localStorage.demo = false;
+
+
 var currentEmail;
 
 setInterval(function emailWrapper(){
