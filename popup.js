@@ -1,11 +1,14 @@
-if(localStorage.searchMessage !== ""){
+if(localStorage.searchMessage !== undefined){
   var a = document.getElementById('url');
   a.innerHTML = localStorage.searchMessage;
   a.href = localStorage.tabStorage;
   a.style.textAlign = "center";
+  document.getElementById('url').style.visibility = "visible";
 }
+
 console.log("demo: " + localStorage.demo);
-console.log("trigger: " + localStorage.trigger)
+console.log("trigger: " + localStorage.trigger);
+
 if(localStorage.trigger == true && localStorage.demo == true) {
   document.getElementById('email-buttons').style.visibility = "hidden";
   localStorage.trigger = false;
@@ -234,6 +237,7 @@ function btn()
      var a = document.getElementById('url');
      a.href = tab;
      a.style.textAlign = "center";
+     document.getElementById('url').style.visibility = "visible";
   }
   localStorage.pathStorage = path;
   localStorage.tabStorage = tab;
