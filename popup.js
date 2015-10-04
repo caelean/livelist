@@ -210,6 +210,7 @@ function btn()
 	   $("#url").text(path);
   }
   localStorage.pathStorage = path;
+  localStorage.tabStorage = tab;
 	console.log(tab);
 	sendRequest();
 }

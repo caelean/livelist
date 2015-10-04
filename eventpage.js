@@ -24,7 +24,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, updatedTab){
 
 function callback(url){
 	//will eventually iterate through list to check if tracked
-	if(url == localStorage.pathStorage){
+	if(url == localStorage.tabStorage){
 		chrome.browserAction.setBadgeText({text: ""});
 	}
 }
