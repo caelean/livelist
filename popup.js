@@ -18,6 +18,9 @@ function btn()
 	{
     path = path.slice(ind+6, path.length);
     path = path.replace(/\+/g, " ")
+    ind = path.indexOf("&");
+    console.log(ind);
+    path = path.slice(0, ind);
 	   $("#url").text(path);
   }
 	console.log(obj);
