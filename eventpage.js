@@ -1,5 +1,5 @@
 localStorage.demo = false;
-
+chrome.browserAction.setBadgeText({text: "1"});
 
 var currentEmail;
 var sent;
