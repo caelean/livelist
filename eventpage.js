@@ -26,6 +26,14 @@ setInterval(function emailWrapper()
 	}
 }, 3000);
 
+setInterval(function checkTrigger(){
+  if(localStorage.demo == 'true' && localStorage.trigger == 'true'){
+    setTimeout(function addBadgeText(){
+      chrome.browserAction.setBadgeText({text: "1"});
+    }, 9250);
+  }
+}, 1000);
+
 chrome.tabs.onActivated.addListener(function(activeInfo) {
     chrome.tabs.get(activeInfo.tabId, function (tab) {
         callback(tab.url);
