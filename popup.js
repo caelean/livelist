@@ -1,10 +1,5 @@
 var mode = localStorage.demo;
 console.log(mode);
-if(localStorage.programState == "" || localStorage.programState == 0){
-  localStorage.programState = 1;
-}else if(localStorage.programState == 1){
-  localStorage.programState = 0;
-}
 
 jQuery.ajax = (function(_ajax){
 
@@ -93,6 +88,9 @@ function sendRequest() {
   getData(tab, function(result) {
       console.log(result);
 			$("#url").append(' : ' + result.length + ' results');
+			if(mode) {
+				localStorage.trigger = true;
+			}
   });
 }
 
