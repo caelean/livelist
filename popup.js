@@ -1,5 +1,3 @@
-chrome.browserAction.setBadgeText({text: ""});
-
 function getJSON(callback){
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
@@ -14,8 +12,8 @@ function getJSON(callback){
 getJSON(function processJSON(data)
 {
 	var processedData = JSON.parse(data);
-	console.log("URL: " + processedData.url + " Price: " + processedData.price +
-		" Location: "+ processedData.location);
+	//console.log("URL: " + processedData.url + " Price: " + processedData.price +
+		//" Location: "+ processedData.location);
 });
 
 
@@ -23,21 +21,10 @@ var tab;
 
 function myFunction(tablink) {
 	this.tab = tablink;
-	chrome.browserAction.setBadgeText({text: ""});
 }
 
 function btn()
 {
-  	chrome.browserAction.getBadgeText({}, function(result){
-		if(result != ""){
-			var newNum = parseInt(result) + 1;
-			var numString = newNum.toString();
-			chrome.browserAction.setBadgeText({text: numString});
-		}else{
-			chrome.browserAction.setBadgeText({text: "1"});
-		}
-	});
-
 	var obj = parse(tab)
 	var path = obj.path;
 	var ind = path.indexOf("query")
