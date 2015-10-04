@@ -84,7 +84,7 @@ function sendRequest() {
   // var url = 'http://sandiego.craigslist.org/search/sss?sort=rel&srchType=T&query=2016+mazda+miata';
   getData(tab, function(result) {
       console.log(result);
-			$("#url").append(': ' + result.length);
+			$("#url").append(' : ' + result.length + ' results');
   });
 }
 
