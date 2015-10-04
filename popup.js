@@ -270,7 +270,8 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('Save').addEventListener('click', btn);
 });
 
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function ()
+{
     document.getElementById('add-email').addEventListener('click', setEmail);
 });
 
@@ -280,29 +281,5 @@ function setEmail(){
   currentEmail = document.getElementById('email').value;
   localStorage.var = currentEmail;
   localStorage.testing = 3;
-}
-
-function sendMail() {
-    $.ajax({
-      type: 'POST',
-      url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-      data: {
-        'key': 'wYV-pnTfFPboxkY4X12I-g',
-        'message': {
-          'from_email': 'amaini@ucsd.edu',
-          'to': [
-              {
-                'email': 'amaini@ucsd.edu',
-                'name': '',
-                'type': 'to'
-              }
-            ],
-          'autotext': 'true',
-          'subject': 'Hello!',
-          'html': 'Test Notification post'
-        }
-      }
-     }).done(function(response) {
-       console.log(response); // if you're into that sorta thing
-     });
+  document.getElementById('email-buttons').style.visibility = "hidden";
 }
