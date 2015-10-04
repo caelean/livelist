@@ -1,5 +1,3 @@
-
-
 jQuery.ajax = (function(_ajax){
 
     var protocol = location.protocol,
