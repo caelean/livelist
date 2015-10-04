@@ -108,16 +108,19 @@ function sendRequest() {
 			$("#url").append(' : ' + result.length + ' results');
       var str = JSON.stringify(result, null, 2);
       console.log(str);
-      var whole = document.createElement('ul');
-      for(var i = 0; i < 3; i++) {
-        var anch = document.createElement('a');
-        anch.href = result[i].URL;
-        anch.innerHTML = result[i].Name;
-        var li = document.createElement('li');
-        li.appendChild(anch);
-        whole.appendChild(li);
-      }
-      document.getElementById('div1').appendChild(whole);
+      // var whole = document.createElement('ul');
+      // for(var i = 0; i < 4; i++) {
+      //   if(i < result.length) {
+      //   var anch = document.createElement('a');
+      //   var refer = "http://sandiego.craigslist.org/" + result[i].URL
+      //   anch.href = refer;
+      //   anch.innerHTML = result[i].Name;
+      //   var li = document.createElement('li');
+      //   li.appendChild(anch);
+      //   whole.appendChild(li);
+      // }
+      // }
+      // document.getElementById('div1').appendChild(whole);
 
       localStorage.searchMessage = document.getElementById('url').innerHTML;
 			if(localStorage.demo === 'true') {
