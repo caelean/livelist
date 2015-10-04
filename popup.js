@@ -7,10 +7,13 @@ if(localStorage.searchMessage !== undefined && localStorage.demo === 'true'){
   document.getElementById('url').style.visibility = "visible";
 }
 
-console.log("demo: " + localStorage.demo);
-console.log("trigger: " + localStorage.trigger);
+// console.log("demo: " + localStorage.demo);
+// console.log("trigger: " + localStorage.trigger);
 if(localStorage.demo === 'false') {
   document.getElementById('email-buttons').style.visibility = "hidden";
+}
+else {
+  document.getElementById('div1').style.visibility = "hidden";
 }
 if(localStorage.trigger === 'true' && localStorage.demo === 'true') {
   document.getElementById('email-buttons').style.visibility = "hidden";
@@ -103,9 +106,10 @@ function sendRequest() {
   // var url = 'http://sandiego.craigslist.org/search/sss?sort=rel&srchType=T&query=2016+mazda+miata';
   getData(tab, function(result) {
 			$("#url").append(' : ' + result.length + ' results');
-
+      var str = JSON.stringify(result, null, 2);
+      console.log(str);
       var whole = document.createElement('ul');
-      for(var i = 0; i < 5; i++) {
+      for(var i = 0; i < 3; i++) {
         var anch = document.createElement('a');
         anch.href = result[i].URL;
         anch.innerHTML = result[i].Name;
@@ -129,7 +133,6 @@ function getData(url, callback) {
       success: function(res) {
           var obj = '['
           var data = res.responseText;
-					console.log(data);
           var html = $.parseHTML(data)[19];
           var content = html.getElementsByClassName('content')[0];
           // document.getElementById('data').appendChild(content);
@@ -239,13 +242,12 @@ function btn()
 	var obj = parse(tab);
 	var path = obj.path;
 	var ind = path.indexOf("query");
-  console.log(ind);
   if(ind > 1)
 	{
     path = path.slice(ind+6, path.length);
     path = path.replace(/\+/g, " ")
     ind = path.indexOf("&");
-    console.log(ind);
+
     // path = path.slice(0, ind);
 	   $("#url").text(path);
      var a = document.getElementById('url');
